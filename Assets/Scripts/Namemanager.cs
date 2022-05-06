@@ -1,17 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Namemanager : MonoBehaviour
 {
-
+public string myName;
+    public GameObject inputField;
     public static Namemanager Instance;
 
-    private void Awake()
+    public void Awake()
     {
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        
     }
 
+    
+    // Start is called before the first frame update
 
+
+    public void StoreName(string s)
+    {
+        Instance.myName = s;
+        Debug.Log(myName);
+    }
 }
